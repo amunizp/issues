@@ -7,7 +7,7 @@ const issueSchema = new mongoose.Schema({
     category:[{type:String, enum:["damp", "paint", "crack", "broken", "other"]}],
     img:{type:String, require:false},
     description:{type:String, require:true},
-    reporter: [{type:String}],
+    reporter: {type:String},
     assignTo:[{type:String, enum:["painter", "joiner", "carpenter", "builder", "electrician", "plumber", "roofer","handyperson", "gardener", "committee","advisoryGroup", "other"  ]}],
     update:[{ type: mongoose.Types.ObjectId, require: false, ref: 'updateIssues'}]
 }, {
