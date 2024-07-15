@@ -20,6 +20,8 @@ const app = express();
 
 console.log(process.env.DB_URL);
 const router = express.Router(); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
 app.use("/issues", issueRoutes);
@@ -28,8 +30,6 @@ app.use("/issues", issueRoutes);
 
 // Crearemos un middleware para cuando no encontremos la ruta que busquemos
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 app.use('*', (req, res, next) => {
 	const error = new Error('Route not found'); 

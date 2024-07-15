@@ -82,7 +82,10 @@ const postIssue = async (req, res, next) => {
         console.log('estoy a punto de crear algo')
         const createdIssue = await newIssue.save();
         return res.status(201).json(createdIssue); 
-    } catch (error){ next(error); }
+    } catch (error){
+      console.log("no consigo postear problema") 
+      next(error);
+     }
 }
 router.post('/create', postIssue)
 
