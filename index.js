@@ -28,6 +28,8 @@ app.use("/issues", issueRoutes);
 
 // Crearemos un middleware para cuando no encontremos la ruta que busquemos
 
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
 
 app.use('*', (req, res, next) => {
 	const error = new Error('Route not found'); 
