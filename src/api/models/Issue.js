@@ -1,7 +1,7 @@
 const mongoose = require("mongoose"); 
 
 const issueSchema = new mongoose.Schema({
-    courtName: {type:String, require: false, trim:true},
+    courtName: {type:String, require: true, trim:true},
     courtNumber: {type:Number, require:false},
     locations:[{type:String, enum:["window", "door", "floor", "celing", "wall", "other"]}],
     category:[{type:String, enum:["damp", "paint", "crack", "broken", "other"]}],

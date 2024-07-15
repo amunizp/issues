@@ -18,11 +18,15 @@ const app = express();
 
 
 console.log(process.env.DB_URL);
-const router = express.Router(); 
+
+
+//damos el formato de el middlware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//aqui las rutas
 
+const router = express.Router(); 
 app.use("/issues", issueRoutes);
 
 // Aquí añadiremos el nuevo código, dejando el controlador de errores en último lugar
