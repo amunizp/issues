@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //aqui las rutas
 
-const router = express.Router(); 
+ 
 app.use("/issues", issueRoutes);
 
 // Aquí añadiremos el nuevo código, dejando el controlador de errores en último lugar
@@ -50,3 +50,4 @@ app.use('*', (req, res, next) => {
 app.listen(PORT, () => {
 	console.log(`Server running in http://localhost:${PORT}`);
   });
+

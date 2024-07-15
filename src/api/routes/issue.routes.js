@@ -2,8 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose')
 
 const Issue = require("../models/Issue");
+const { postUpdateIssue, getUpdateIssue } = require('../controllers/updateIssue') 
 
 const router = express.Router();
+
+const updateIssueRouter = require('express').Router();
+
+//updateIssueRouter.get('/:id', getUpdateIssue);
+//updateIssueRouter.post('/', postUpdateIssue);
+
+module.exports = updateIssueRouter;
 
 const getIssues = async (req, res, next) =>{
   try {
@@ -140,3 +148,6 @@ const editIssue = async (req, res, next) => {
 }
 
 router.put('/edit/:id', editIssue);
+
+
+
