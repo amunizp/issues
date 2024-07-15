@@ -17,7 +17,6 @@ const PORT = 3000;
 const app = express();
 
 
-
 console.log(process.env.DB_URL);
 const router = express.Router(); 
 app.use(express.json());

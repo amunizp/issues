@@ -19,6 +19,7 @@ router.get("/", getIssues);
 
 
 const getIssueById = async (req, res, next) =>{
+  const id = req.params.id; 
   try {
     const issue = await Issue.findById(id);
     console.log(issue)
