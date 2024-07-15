@@ -1,4 +1,5 @@
 const express = require('express'); 
+const mongoose = require('mongoose')
 
 const Issue = require("../models/Issue");
 
@@ -29,11 +30,15 @@ const getIssueById = async (req, res, next) =>{
 
     }
     else{
-      console.log("else no hay issue")
+      console.log("else no hay issue. comprueba se va a catch?")
       return res.status(404).json('no issue found by this id'); //TODO por alguna razon este mensaje no se ve. 
     }
   } catch (error){
+    if (error instanceof mongoose.CastError) {
+      return res.status(400).json({ message: 'Formato ID invalido' });
+  } else{
     return res.status(500).json(error);
+  }
   }
 };
 
@@ -46,7 +51,9 @@ const getIssuesByCourtName = async (req, res, next) =>{
     console.log(issue)
     return res.status(200).json(issuesByCourtName);
   } catch (error){
+    
     return res.status(500).json(error);
+  
   }
 };
 
@@ -82,6 +89,7 @@ const postIssue = async (req, res, next) => {
         });
         console.log('estoy a punto de crear algo')
         const createdIssue = await newIssue.save();
+
         return res.status(201).json(createdIssue); 
     } catch (error){
       console.log("no consigo postear problema") 
